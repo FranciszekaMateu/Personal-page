@@ -31,3 +31,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# CV PDFs
+/CV.pdf
+/CV Francisco Escobar (2).pdf
