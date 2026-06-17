@@ -1,0 +1,242 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* ═══════════════════════════════════════════════════════════════
+     NEOBRUTALIST GEEK / CYBERPUNK-BRUTALIST
+     ═══════════════════════════════════════════════════════════════ */
+  --background: #08080c;
+  --background-alt: #0d0d14;
+  --foreground: #e0e0f0;
+  --foreground-dim: rgba(224, 224, 240, 0.7);
+  --primary: #FF4500;           /* Hot orange-red */
+  --secondary: #BAFF29;         /* Acid lime */
+  --accent: #FF4500;
+  --accent-soft: #FF6B35;
+  --accent-secondary: #BAFF29;
+  --accent-tertiary: #00e5ff;   /* Cyber cyan */
+  --border: #1a1a2e;
+  --border-thick: #FF4500;
+  --border-neon: #BAFF29;
+
+  /* Hard Brutalist Shadows */
+  --shadow-brutal: 4px 4px 0px #FF4500;
+  --shadow-lime: 4px 4px 0px #BAFF29;
+  --shadow-cyan: 4px 4px 0px #00e5ff;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-mono), 'JetBrains Mono', monospace;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+/* CRT Screen scanline overlay effect */
+.crt-overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 3px, 6px 100%;
+  z-index: 99;
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+/* Scanline flicker animation */
+@keyframes flicker {
+  0% { opacity: 0.27861; }
+  5% { opacity: 0.34769; }
+  10% { opacity: 0.23604; }
+  15% { opacity: 0.90626; }
+  20% { opacity: 0.18128; }
+  25% { opacity: 0.83891; }
+  30% { opacity: 0.65583; }
+  35% { opacity: 0.67807; }
+  40% { opacity: 0.26559; }
+  45% { opacity: 0.84693; }
+  50% { opacity: 0.96019; }
+  55% { opacity: 0.13594; }
+  60% { opacity: 0.88013; }
+  65% { opacity: 0.52851; }
+  70% { opacity: 0.58971; }
+  75% { opacity: 0.58622; }
+  80% { opacity: 0.30164; }
+  85% { opacity: 0.28742; }
+  90% { opacity: 0.46532; }
+  95% { opacity: 0.2693; }
+  100% { opacity: 0.30225; }
+}
+
+.crt-flicker {
+  animation: flicker 0.15s infinite;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .font-serif {
+    font-family: var(--font-serif), 'Newsreader', Georgia, serif;
+  }
+
+  .font-sans {
+    font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  /* 3D Perspective Card Container */
+  .card-container-3d {
+    perspective: 1000px;
+  }
+
+  /* 3D Cyber Card */
+  .cyber-card {
+    background: rgba(13, 13, 22, 0.85);
+    border: 2px solid #1a1a2e;
+    box-shadow: 4px 4px 0px #1a1a2e;
+    transform-style: preserve-3d;
+    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .cyber-card:hover {
+    border-color: var(--accent-secondary);
+    box-shadow: 6px 6px 0px var(--accent-secondary);
+    transform: translateZ(15px);
+  }
+
+  /* Cyber Glitch text utility */
+  .glitch-text {
+    position: relative;
+  }
+
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background);
+  }
+
+  .glitch-text::before {
+    left: 2px;
+    text-shadow: -1px 0 #ff00c1;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+  }
+
+  .glitch-text::after {
+    left: -2px;
+    text-shadow: -1px 0 #00e5ff, 0 1px #00e5ff;
+    clip: rect(85px, 450px, 140px, 0);
+    animation: glitch-anim2 5s infinite linear alternate-reverse;
+  }
+
+  /* Gradient/Accent text */
+  .gradient-text {
+    color: var(--accent-secondary);
+    text-shadow: 0 0 10px rgba(186, 255, 41, 0.3);
+  }
+}
+
+/* Glitch animation frames */
+@keyframes glitch-anim {
+  0% { clip: rect(15px, 9999px, 66px, 0); }
+  10% { clip: rect(34px, 9999px, 55px, 0); }
+  20% { clip: rect(70px, 9999px, 105px, 0); }
+  30% { clip: rect(12px, 9999px, 85px, 0); }
+  40% { clip: rect(98px, 9999px, 150px, 0); }
+  50% { clip: rect(5px, 9999px, 45px, 0); }
+  60% { clip: rect(110px, 9999px, 120px, 0); }
+  70% { clip: rect(40px, 9999px, 90px, 0); }
+  80% { clip: rect(85px, 9999px, 115px, 0); }
+  90% { clip: rect(2px, 9999px, 30px, 0); }
+  100% { clip: rect(55px, 9999px, 75px, 0); }
+}
+
+@keyframes glitch-anim2 {
+  0% { clip: rect(65px, 9999px, 105px, 0); }
+  10% { clip: rect(5px, 9999px, 40px, 0); }
+  20% { clip: rect(125px, 9999px, 140px, 0); }
+  30% { clip: rect(20px, 9999px, 60px, 0); }
+  40% { clip: rect(80px, 9999px, 100px, 0); }
+  50% { clip: rect(45px, 9999px, 90px, 0); }
+  60% { clip: rect(10px, 9999px, 35px, 0); }
+  70% { clip: rect(115px, 9999px, 130px, 0); }
+  80% { clip: rect(50px, 9999px, 75px, 0); }
+  90% { clip: rect(90px, 9999px, 120px, 0); }
+  100% { clip: rect(25px, 9999px, 50px, 0); }
+}
+
+/* Cyber Terminal Styling */
+.terminal-window {
+  background: #06060a;
+  border: 2px solid #FF4500;
+  box-shadow: 5px 5px 0px #FF4500;
+  border-radius: 0px;
+}
+
+.terminal-header {
+  background: #FF4500;
+  color: #000;
+  font-weight: bold;
+}
+
+/* Brutalist Custom Buttons */
+.btn-cyber {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  font-family: var(--font-geist-mono), monospace;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 2px solid #FF4500;
+  background: #08080c;
+  color: #FF4500;
+  box-shadow: 3px 3px 0px #FF4500;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.btn-cyber:hover {
+  background: #FF4500;
+  color: #000;
+  box-shadow: 0px 0px 0px #FF4500;
+  transform: translate(3px, 3px);
+}
+
+.btn-cyber-lime {
+  border-color: #BAFF29;
+  color: #BAFF29;
+  box-shadow: 3px 3px 0px #BAFF29;
+}
+
+.btn-cyber-lime:hover {
+  background: #BAFF29;
+  color: #000;
+  box-shadow: 0px 0px 0px #BAFF29;
+  transform: translate(3px, 3px);
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #08080c;
+}
+::-webkit-scrollbar-thumb {
+  background: #FF4500;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #BAFF29;
+}
