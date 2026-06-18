@@ -116,10 +116,6 @@ export default function AmbientBackground() {
     let targetX = 0, targetY = 0;
     let scrollY = 0;
     let targetScrollY = 0;
-    let scrollSpeed = 0;
-    let lastScrollY = 0;
-    let lastScrollTime = performance.now();
-
     const handleMouseMove = (e: MouseEvent) => {
       mouseX = (e.clientX - window.innerWidth / 2) / 150;
       mouseY = (e.clientY - window.innerHeight / 2) / 150;
@@ -127,15 +123,6 @@ export default function AmbientBackground() {
 
     const handleScroll = () => {
       targetScrollY = window.scrollY;
-      
-      const now = performance.now();
-      const dt = now - lastScrollTime;
-      if (dt > 0) {
-        const dy = Math.abs(window.scrollY - lastScrollY);
-        scrollSpeed = (dy / dt) * 30; // Scale speed factor
-      }
-      lastScrollY = window.scrollY;
-      lastScrollTime = now;
     };
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
@@ -162,16 +149,12 @@ export default function AmbientBackground() {
       targetY += (mouseY - targetY) * 0.05;
       scrollY += (targetScrollY - scrollY) * 0.08;
 
-      // Slow down scroll speed velocity decay
-      scrollSpeed *= 0.95;
-
-      // Rotate Torus Knot based on elapsed time + scroll velocity (subtly)
-      const rotationMultiplier = 1.0 + scrollSpeed * 0.04;
-      torusKnot.rotation.y = elapsedTime * 0.2 * rotationMultiplier;
-      torusKnot.rotation.x = elapsedTime * 0.15 + targetY * 0.2;
+      // Rotate Torus Knot based on elapsed time + scroll position smoothly (no speed multiplier)
+      torusKnot.rotation.y = elapsedTime * 0.12 + scrollY * 0.0006;
+      torusKnot.rotation.x = elapsedTime * 0.08 + scrollY * 0.0004 + targetY * 0.15;
       
-      // Pulse scale matching scroll acceleration (subtly)
-      const scaleFactor = 1.0 + Math.sin(elapsedTime * 2.0) * 0.05 + Math.min(scrollSpeed * 0.003, 0.08);
+      // Pulse scale matching elapsed time (subtly)
+      const scaleFactor = 1.0 + Math.sin(elapsedTime * 1.5) * 0.04;
       torusKnot.scale.set(scaleFactor, scaleFactor, scaleFactor);
 
 

@@ -82,16 +82,22 @@ export default function Hero() {
   useEffect(() => {
     const welcome = locale === "es" 
       ? [
-          "SISTEMA: INICIALIZADO CORRECTAMENTE.",
-          "NÚCLEO: EIKOS-OS v2.4.0 (PLATAFORMA GEEK)",
+          "sh init_fsociety.sh",
+          "Connecting to 192.251.68.254...",
+          "Establishing encrypted tunnel [TUN0]...",
+          "---------------------------------------------",
+          "NÚCLEO: EIKOS-OS v2.4.0-fsociety (ACTIVE)",
           "ESTUDIANTE: INGENIERÍA EN COMPUTACIÓN @ UDELAR, URUGUAY.",
           "FUNDADOR: EIKOS LABS - SOFTWARE DE ALTO RENDIMIENTO.",
           "---------------------------------------------",
           "Escribe 'help' o haz clic en los accesos rápidos para explorar.",
         ]
       : [
-          "SYSTEM: INITIALIZED SUCCESSFULLY.",
-          "CORE: EIKOS-OS v2.4.0 (GEEK PLATFORM)",
+          "sh init_fsociety.sh",
+          "Connecting to 192.251.68.254...",
+          "Establishing encrypted tunnel [TUN0]...",
+          "---------------------------------------------",
+          "CORE: EIKOS-OS v2.4.0-fsociety (ACTIVE)",
           "UNDERGRAD: COMPUTER ENGINEERING @ UDELAR, URUGUAY.",
           "FOUNDER: EIKOS LABS - HIGH-PERFORMANCE DIGITAL PRODUCTS.",
           "---------------------------------------------",
@@ -117,6 +123,7 @@ export default function Hero() {
             "  about      - Quién soy y mis estudios.",
             "  projects   - Ir a la sección de proyectos.",
             "  contact    - Información de contacto.",
+            "  fsociety   - Inicializar protocolo fsociety.",
             "  clear      - Limpiar la pantalla de la terminal.",
           ]
         : [
@@ -125,6 +132,7 @@ export default function Hero() {
             "  about      - Who I am and my studies.",
             "  projects   - Go to projects section.",
             "  contact    - Contact information.",
+            "  fsociety   - Initialize fsociety protocol.",
             "  clear      - Clear the terminal screen.",
           ];
     } else if (trimmed === "about") {
@@ -177,6 +185,29 @@ export default function Hero() {
             "  GitHub: github.com/FranciszekaMateu",
             "  LinkedIn: linkedin.com/in/franciscoesscobarr",
           ];
+    } else if (trimmed === "fsociety" || trimmed === "mrrobot") {
+      response = [
+        `> ${cmd}`,
+        "[SYSTEM OVERRIDE] BYPASSING SEG-0...",
+        "Executing: python fuxsocy.py...",
+        "---------------------------------------------",
+        "   __                     _      _",
+        "  / _|                   (_)    | |",
+        " | |_ ___  ___   ___ _ ___ _  __| |_   _",
+        " |  _/ __| / _ \\ / __| |  __| | / _` | | | |",
+        " | | \\__ \\ (_) | (__| | |_| | (_| | |_| |",
+        " |_| |___/\\___/ \\___|_|\\__|_|\\__,_|\\__, |",
+        "                                    __/ |",
+        "                                   |___/",
+        "",
+        locale === "es"
+          ? '"¿Hola amigo? Eso es cursi... Necesito un nombre."'
+          : '"Hello friend. That\'s lame. I need a name."',
+        locale === "es"
+          ? '"El mundo es una gran mentira. Vivimos en una ilusión."'
+          : '"We live in a world where everyone is gaslighted..."',
+        "---------------------------------------------",
+      ];
     } else if (trimmed === "clear") {
       setHistory([]);
       setInput("");
@@ -255,7 +286,7 @@ export default function Hero() {
             <div className="bg-foreground text-background font-mono text-xs px-4 py-2 flex items-center justify-between font-bold select-none">
               <span className="flex items-center gap-2">
                 <TerminalIcon className="w-4 h-4" />
-                <span>FRANCISCO_TERMINAL.EXE (MULTI_PANE)</span>
+                <span>elliot@fsociety:~/personal-page</span>
               </span>
               <div className="flex items-center gap-1.5">
                 <span className="w-2.5 h-2.5 bg-[#FF4500] border border-foreground" />
@@ -330,7 +361,7 @@ export default function Hero() {
               }}
               className="border-t-[2px] border-foreground flex items-center bg-[#07070a] px-3 py-2"
             >
-              <span className="font-mono text-xs text-accent font-bold mr-2">{locale === "es" ? "consola" : "console"}&gt;</span>
+              <span className="font-mono text-xs text-[#BAFF29] font-bold mr-1.5">elliot@fsociety:~$</span>
               <input
                 type="text"
                 value={input}
@@ -351,6 +382,9 @@ export default function Hero() {
             </button>
             <button onClick={() => handleCommand("contact")} className="px-2 py-0.5 border border-foreground/30 hover:border-accent text-foreground/60 hover:text-accent">
               [Run contact]
+            </button>
+            <button onClick={() => handleCommand("fsociety")} className="px-2 py-0.5 border border-[#FF4500]/40 hover:border-[#FF4500] text-[#FF4500]/70 hover:text-[#FF4500] font-bold">
+              [fsociety.sh]
             </button>
           </div>
         </motion.div>
