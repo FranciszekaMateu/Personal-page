@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import AmbientBackground from "@/components/AmbientBackground";
 import MatrixRain from "@/components/MatrixRain";
+import CustomCursor from "@/components/CustomCursor";
 
 export default function Home() {
   return (
@@ -12,6 +13,8 @@ export default function Home() {
       {/* CRT Scanline & flicker overlay for geek visual spectacle */}
       <div className="crt-overlay pointer-events-none" />
       <div className="crt-overlay crt-flicker pointer-events-none" />
+
+      <CustomCursor />
 
       <Navigation />
 

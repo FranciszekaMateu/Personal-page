@@ -44,7 +44,7 @@ export default function AmbientBackground() {
     // ═══════════════════════════════════════════════════════════════
     const torusGeom = new THREE.TorusKnotGeometry(10, 3, 100, 16);
     const torusMat = new THREE.MeshBasicMaterial({
-      color: 0xff4500, // Hot orange
+      color: 0xff1e27, // Mr. Robot Crimson Red
       wireframe: true,
       transparent: true,
       opacity: 0.18,

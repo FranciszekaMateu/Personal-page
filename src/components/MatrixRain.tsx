@@ -32,11 +32,11 @@ export default function MatrixRain() {
 
     const draw = () => {
       // Dark semi-transparent background to create trailing/fade effect
-      ctx.fillStyle = "rgba(8, 8, 12, 0.08)";
+      ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Neon acid-lime text
-      ctx.fillStyle = "#baff29";
+      // Crimson hacker red text
+      ctx.fillStyle = "#ff1e27";
       ctx.font = `${fontSize}px monospace`;
 
       for (let i = 0; i < rainDrops.length; i++) {
@@ -50,7 +50,7 @@ export default function MatrixRain() {
           if (Math.random() > 0.98) {
             ctx.fillStyle = "#ffffff";
             ctx.fillText(char, x, y);
-            ctx.fillStyle = "#baff29";
+            ctx.fillStyle = "#ff1e27";
           } else {
             ctx.fillText(char, x, y);
           }

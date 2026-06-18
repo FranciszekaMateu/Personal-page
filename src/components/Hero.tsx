@@ -253,7 +253,7 @@ export default function Hero() {
           <div className="flex flex-wrap gap-3 pt-2">
             <a
               href="mailto:franciscomateoescobar1@gmail.com"
-              className="btn-cyber btn-cyber-lime inline-flex items-center gap-2"
+              className="btn-cyber btn-cyber-white inline-flex items-center gap-2"
             >
               <Mail className="w-4 h-4" />
               {t("hero.contact")}
@@ -288,18 +288,18 @@ export default function Hero() {
                 <TerminalIcon className="w-4 h-4" />
                 <span>elliot@fsociety:~/personal-page</span>
               </span>
-              <div className="flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 bg-[#FF4500] border border-foreground" />
-                <span className="w-2.5 h-2.5 bg-[#BAFF29] border border-foreground" />
-                <span className="w-2.5 h-2.5 bg-[#00e5ff] border border-foreground" />
+              <div className="flex items-center gap-1.5 font-sans">
+                <span className="w-2.5 h-2.5 bg-primary border border-foreground" />
+                <span className="w-2.5 h-2.5 bg-[#99000b] border border-foreground" />
+                <span className="w-2.5 h-2.5 bg-[#222222] border border-foreground" />
               </div>
             </div>
 
             {/* Split Screen Workspace */}
-            <div className="flex flex-grow overflow-hidden bg-[#050508]">
+            <div className="flex flex-grow overflow-hidden bg-[#000000]">
               {/* Left Pane: Interactive Console Log (70% width) */}
-              <div className="w-[62%] sm:w-[67%] p-4 flex flex-col justify-between overflow-y-auto border-r-2 border-foreground/20 font-mono text-[10px] sm:text-xs text-foreground/80 space-y-1 relative">
-                <div className="absolute top-2 right-2 flex items-center gap-1 text-[#FF4500] opacity-40 text-[9px] animate-pulse">
+              <div className="w-[62%] sm:w-[67%] p-4 flex flex-col justify-between overflow-y-auto border-r-2 border-foreground/20 font-mono text-[10px] sm:text-xs text-foreground/85 space-y-1 relative">
+                <div className="absolute top-2 right-2 flex items-center gap-1 text-primary opacity-45 text-[9px] animate-pulse">
                   <ShieldAlert className="w-3.5 h-3.5" />
                   <span>CON_FEED</span>
                 </div>
@@ -308,11 +308,13 @@ export default function Hero() {
                   {history.map((line, idx) => (
                     <div key={idx} className="whitespace-pre-wrap leading-relaxed">
                       {line.startsWith("> ") ? (
-                        <span className="text-accent font-bold">{line}</span>
-                      ) : line.includes("SISTEMA:") || line.includes("SYSTEM:") ? (
-                        <span className="text-[#00e5ff]">{line}</span>
-                      ) : line.includes("ESTUDIANTE:") || line.includes("UNDERGRAD:") || line.includes("FUNDADOR:") || line.includes("NÚCLEO:") || line.includes("CORE:") ? (
-                        <span className="text-accent-secondary">{line}</span>
+                        <span className="text-primary font-bold">{line}</span>
+                      ) : line.includes("sh init") || line.includes("Connecting to") || line.includes("Establishing") ? (
+                        <span className="text-foreground/50">{line}</span>
+                      ) : line.includes("NÚCLEO:") || line.includes("CORE:") ? (
+                        <span className="text-primary font-bold">{line}</span>
+                      ) : line.includes("ESTUDIANTE:") || line.includes("UNDERGRAD:") || line.includes("FUNDADOR:") ? (
+                        <span className="text-foreground font-semibold">{line}</span>
                       ) : (
                         line
                       )}
@@ -323,10 +325,10 @@ export default function Hero() {
               </div>
 
               {/* Right Pane: Integrated ASCII Torus Monitor + Status Feed (30% width) */}
-              <div className="w-[38%] sm:w-[33%] p-3 bg-[#08080f]/50 flex flex-col justify-between font-mono text-[9px] sm:text-[10px] text-foreground/70 overflow-hidden select-none">
+              <div className="w-[38%] sm:w-[33%] p-3 bg-[#050508]/60 flex flex-col justify-between font-mono text-[9px] sm:text-[10px] text-foreground/75 overflow-hidden select-none">
                 {/* 3D ASCII Torus viewport */}
                 <div className="flex-grow flex items-center justify-center border-b border-foreground/20 py-2">
-                  <pre className="text-[4.8px] sm:text-[6.5px] leading-none text-[#BAFF29]">
+                  <pre className="text-[4.8px] sm:text-[6.5px] leading-none text-primary">
                     {asciiFrame}
                   </pre>
                 </div>
@@ -335,19 +337,19 @@ export default function Hero() {
                 <div className="pt-3 space-y-1 sm:space-y-1.5">
                   <div className="flex justify-between">
                     <span>SYS_LOAD:</span>
-                    <span className="text-[#00e5ff] font-bold">ONLINE</span>
+                    <span className="text-primary font-bold">ONLINE</span>
                   </div>
                   <div className="flex justify-between">
                     <span>CPU_UTIL:</span>
-                    <span className="text-accent font-bold tabular-nums">{systemLoad.cpu}%</span>
+                    <span className="text-primary font-bold tabular-nums">{systemLoad.cpu}%</span>
                   </div>
                   <div className="flex justify-between">
                     <span>RAM_ALLOC:</span>
-                    <span className="text-[#BAFF29] font-bold tabular-nums">{systemLoad.ram}%</span>
+                    <span className="text-primary font-bold tabular-nums">{systemLoad.ram}%</span>
                   </div>
                   <div className="flex justify-between border-t border-foreground/20 pt-1">
                     <span>SECTOR_3D:</span>
-                    <span className="text-accent-secondary font-bold">ACTIVE</span>
+                    <span className="text-foreground/80 font-bold">ACTIVE</span>
                   </div>
                 </div>
               </div>
@@ -359,9 +361,9 @@ export default function Hero() {
                 e.preventDefault();
                 handleCommand(input);
               }}
-              className="border-t-[2px] border-foreground flex items-center bg-[#07070a] px-3 py-2"
+              className="border-t-[2px] border-foreground flex items-center bg-[#050508] px-3 py-2"
             >
-              <span className="font-mono text-xs text-[#BAFF29] font-bold mr-1.5">elliot@fsociety:~$</span>
+              <span className="font-mono text-xs text-primary font-bold mr-1.5">elliot@fsociety:~$</span>
               <input
                 type="text"
                 value={input}

@@ -10,25 +10,53 @@ const projects = [
     name: "Eikos Labs",
     url: "https://eikoslabs.com",
     descKey: "projects.eikos.description",
-    tech: ["Next.js", "TypeScript", "Node.js", "Tailwind CSS"]
+    tech: ["Next.js", "TypeScript", "Node.js", "Tailwind CSS"],
+    ascii: [
+      "   (o)---(o)  ",
+      "    | \\ / |   ",
+      "    |  x  |   ",
+      "    | / \\ |   ",
+      "   (o)---(o)  "
+    ]
   },
   {
     name: "Menuses QR",
     url: "https://menusesqr.com",
     descKey: "projects.menusesqr.description",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "PostgreSQL"]
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "PostgreSQL"],
+    ascii: [
+      "  ■ ■ ■ ▢ ■ ■ ■ ",
+      "  ■ ▢ ■ ▢ ■ ▢ ■ ",
+      "  ■ ■ ■ ▢ ■ ■ ■ ",
+      "  ▢ ▢ ▢ ▢ ▢ ▢ ▢ ",
+      "  ■ ■ ▢ ▢ ■ ■ ■ "
+    ]
   },
   {
     name: "La Penca",
     url: "https://penca.eikoslabs.com",
     descKey: "projects.penca.description",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "WebSockets"]
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "WebSockets"],
+    ascii: [
+      "  [Team A]──┐   ",
+      "            ├───",
+      "  [Team B]──┘   ",
+      "            |   ",
+      "  [Winner]◀─┘   "
+    ]
   },
   {
     name: "Wifi Gomera",
     url: "https://www.wifigomera.com",
     descKey: "projects.wifigomera.description",
-    tech: ["CSS", "JavaScript", "HTML", "SEO"]
+    tech: ["CSS", "JavaScript", "HTML", "SEO"],
+    ascii: [
+      "      ((●))     ",
+      "     (( | ))    ",
+      "    ((  |  ))   ",
+      "   ((   |   ))  ",
+      "  ==============="
+    ]
   }
 ];
 
@@ -101,8 +129,8 @@ export default function Projects() {
           </h2>
         </div>
         
-        <div className="font-mono text-xs uppercase tracking-widest text-[#BAFF29] flex items-center gap-1.5 animate-pulse">
-          <span className="w-2 h-2 rounded-full bg-[#BAFF29]" />
+        <div className="font-mono text-xs uppercase tracking-widest text-primary flex items-center gap-1.5 animate-pulse">
+          <span className="w-2 h-2 rounded-full bg-primary" />
           <span>3D TILT_SYS ACTIVE</span>
         </div>
       </motion.div>
@@ -123,25 +151,36 @@ export default function Projects() {
               >
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 bg-background border-[2px] border-foreground group-hover:border-accent-secondary group-hover:bg-accent-secondary transition-all duration-150">
+                    <div className="p-2 bg-background border-[2px] border-foreground group-hover:border-primary group-hover:bg-primary transition-all duration-150">
                       <Globe className="w-5 h-5 text-foreground/75 group-hover:text-background transition-colors duration-150" />
                     </div>
                     <h3 className="font-sans font-bold text-lg text-foreground uppercase tracking-tight">
                       {project.name}
                     </h3>
                   </div>
-                  <ExternalLink className="w-4 h-4 text-foreground/40 group-hover:text-accent-secondary transition-colors duration-150" />
+                  <ExternalLink className="w-4 h-4 text-foreground/40 group-hover:text-primary transition-colors duration-150" />
                 </div>
                 
-                <p className="font-sans text-sm text-foreground/75 leading-relaxed flex-grow">
-                  {t(project.descKey)}
-                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center flex-grow">
+                  <div className="sm:col-span-8">
+                    <p className="font-sans text-sm text-foreground/75 leading-relaxed">
+                      {t(project.descKey)}
+                    </p>
+                  </div>
+                  {project.ascii && (
+                    <div className="hidden sm:flex sm:col-span-4 justify-center items-center">
+                      <pre className="font-mono text-[8px] leading-tight text-primary/40 group-hover:text-primary transition-colors duration-150 select-none">
+                        {project.ascii.join("\n")}
+                      </pre>
+                    </div>
+                  )}
+                </div>
                 
                 <div className="flex flex-wrap gap-1.5 pt-4 border-t-[2px] border-foreground/20">
                   {project.tech.map((techItem) => (
                     <span
                       key={techItem}
-                      className="font-mono text-[9px] uppercase tracking-wider px-2 py-0.5 border border-foreground bg-background text-foreground/80 group-hover:border-accent-secondary group-hover:text-accent-secondary transition-colors duration-150"
+                      className="font-mono text-[9px] uppercase tracking-wider px-2 py-0.5 border border-foreground bg-background text-foreground/80 group-hover:border-primary group-hover:text-primary transition-colors duration-150"
                     >
                       [{techItem}]
                     </span>
@@ -164,11 +203,11 @@ export default function Projects() {
               className="flex flex-col justify-center items-center text-center space-y-4 min-h-[220px]"
               style={{ transform: "translateZ(30px)" }}
             >
-              <div className="p-3 bg-background border-[2px] border-foreground group-hover:bg-accent-secondary group-hover:border-accent-secondary transition-all duration-150">
+              <div className="p-3 bg-background border-[2px] border-foreground group-hover:bg-primary group-hover:border-primary transition-all duration-150">
                 <ExternalLink className="w-5 h-5 text-foreground/80 group-hover:text-background" />
               </div>
               <div>
-                <h3 className="font-mono font-bold text-base text-foreground uppercase mb-1 group-hover:text-accent-secondary transition-colors">
+                <h3 className="font-mono font-bold text-base text-foreground uppercase mb-1 group-hover:text-primary transition-colors">
                   {t("projects.githubCTA.title")}
                 </h3>
                 <p className="font-mono text-xs text-foreground/60 uppercase">

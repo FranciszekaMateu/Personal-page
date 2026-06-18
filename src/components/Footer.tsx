@@ -24,7 +24,7 @@ export default function Footer() {
           </h3>
           <a
             href="mailto:franciscomateoescobar1@gmail.com"
-            className="group inline-flex items-center gap-2 font-mono text-xs text-foreground border-b-2 border-foreground hover:border-accent-secondary hover:text-accent-secondary transition-colors pb-0.5"
+            className="group inline-flex items-center gap-2 font-mono text-xs text-foreground border-b-2 border-foreground hover:border-primary hover:text-primary transition-colors pb-0.5"
           >
             <Mail className="w-3.5 h-3.5 flex-shrink-0" />
             <span>franciscomateoescobar1@gmail.com</span>
@@ -32,6 +32,15 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col items-start md:items-end gap-3">
+          <div className="hidden sm:block text-right mb-1">
+            <pre className="font-mono text-[7px] leading-none text-primary/30 select-none font-bold">
+              {"  ___ ___   ___   ___ _ ___ _____ _   _ \n" +
+               " | __/ __| / _ \\ / __| _ \\ __|_   _\\ \\ / / \n" +
+               " | _|\\__ \\| (_) | (__|   / _|  | |  \\ V /  \n" +
+               " |_| |___/ \\___/ \\___|_|_\\___| |_|   |_|   "}
+            </pre>
+          </div>
+
           <div className="flex items-center gap-4">
             {[
               { href: "https://github.com/FranciszekaMateu", label: "GitHub" },
@@ -42,7 +51,7 @@ export default function Footer() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-1 font-mono text-xs uppercase tracking-wider text-foreground/70 hover:text-accent-secondary transition-colors"
+                className="group inline-flex items-center gap-1 font-mono text-xs uppercase tracking-wider text-foreground/70 hover:text-primary transition-colors"
               >
                 {link.label}
                 <ArrowUpRight className="w-3 h-3 text-foreground/40 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

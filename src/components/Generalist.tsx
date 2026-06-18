@@ -60,7 +60,7 @@ export default function Generalist() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.2, delay: i * 0.05 }}
-                className="group flex flex-col justify-between p-3 border border-foreground/30 bg-background hover:bg-[#BAFF29] hover:border-foreground transition-all duration-150 relative overflow-hidden"
+                className="group flex flex-col justify-between p-3 border border-foreground/30 bg-background hover:bg-primary hover:border-foreground transition-all duration-150 relative overflow-hidden"
               >
                 <div className="flex items-center justify-between mb-3 text-foreground/60 group-hover:text-background">
                   <interest.icon className="w-5 h-5 flex-shrink-0" />
