@@ -5,7 +5,6 @@ import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import AmbientBackground from "@/components/AmbientBackground";
 import MatrixRain from "@/components/MatrixRain";
-import TelemetryHUD from "@/components/TelemetryHUD";
 
 export default function Home() {
   return (
@@ -16,8 +15,7 @@ export default function Home() {
 
       <Navigation />
 
-      {/* Persistent high-tech telemetry HUD overlay tracking scroll metrics */}
-      <TelemetryHUD />
+
 
       {/* 3D Interactive WebGL space field / Torus Knot */}
       <AmbientBackground />

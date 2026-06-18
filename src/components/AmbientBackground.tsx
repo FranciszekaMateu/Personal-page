@@ -107,54 +107,7 @@ export default function AmbientBackground() {
     }
     scene.add(tunnelGroup);
 
-    // ═══════════════════════════════════════════════════════════════
-    // WARP SPEED PARTICLES (Constellations)
-    // ═══════════════════════════════════════════════════════════════
-    const particlesCount = 400;
-    const positions = new Float32Array(particlesCount * 3);
-    const particleSpeeds = new Float32Array(particlesCount);
-    
-    for (let i = 0; i < particlesCount; i++) {
-      // Cylindrical distribution around tunnel
-      const angle = Math.random() * Math.PI * 2;
-      const radius = 5 + Math.random() * 30;
-      
-      positions[i * 3] = Math.sin(angle) * radius;
-      positions[i * 3 + 1] = Math.cos(angle) * radius;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 120; // Spread on Z
 
-      particleSpeeds[i] = 0.2 + Math.random() * 0.8;
-    }
-
-    const particleGeometry = new THREE.BufferGeometry();
-    particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-
-    // Dynamic particle point texture
-    const pCanvas = document.createElement("canvas");
-    pCanvas.width = 16;
-    pCanvas.height = 16;
-    const pCtx = pCanvas.getContext("2d");
-    if (pCtx) {
-      const grad = pCtx.createRadialGradient(8, 8, 0, 8, 8, 8);
-      grad.addColorStop(0, "rgba(186, 255, 41, 1)");
-      grad.addColorStop(1, "rgba(186, 255, 41, 0)");
-      pCtx.fillStyle = grad;
-      pCtx.fillRect(0, 0, 16, 16);
-    }
-    const pTexture = new THREE.CanvasTexture(pCanvas);
-
-    const particleMaterial = new THREE.PointsMaterial({
-      color: 0xbaff29, // Acid lime
-      size: 0.8,
-      transparent: true,
-      opacity: 0.5,
-      map: pTexture,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
-    });
-
-    const particles = new THREE.Points(particleGeometry, particleMaterial);
-    scene.add(particles);
 
     // ═══════════════════════════════════════════════════════════════
     // INTERACTIVE LOOPS
@@ -221,20 +174,7 @@ export default function AmbientBackground() {
       const scaleFactor = 1.0 + Math.sin(elapsedTime * 2.0) * 0.05 + Math.min(scrollSpeed * 0.003, 0.08);
       torusKnot.scale.set(scaleFactor, scaleFactor, scaleFactor);
 
-      // Animate particles (plunging forward)
-      const posArr = particleGeometry.attributes.position.array as Float32Array;
-      for (let i = 0; i < particlesCount; i++) {
-        // Move particle forward (positive Z)
-        // Accelerate when scrolling (subtly)
-        const particleSpeed = particleSpeeds[i] * (1.0 + scrollSpeed * 0.06);
-        posArr[i * 3 + 2] += particleSpeed;
 
-        // If particle flies past camera, recycle it in the background
-        if (posArr[i * 3 + 2] > 60) {
-          posArr[i * 3 + 2] = -60;
-        }
-      }
-      particleGeometry.attributes.position.needsUpdate = true;
 
       // Parallax camera movement
       camera.position.x = targetX * 12;
@@ -259,9 +199,7 @@ export default function AmbientBackground() {
       }
       torusGeom.dispose();
       torusMat.dispose();
-      particleGeometry.dispose();
-      particleMaterial.dispose();
-      pTexture.dispose();
+
       
       tunnelGroup.traverse((child) => {
         if (child instanceof THREE.Line) {

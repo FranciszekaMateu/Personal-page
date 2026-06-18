@@ -204,8 +204,7 @@ export default function Hero() {
           <div className="space-y-4">
             <span className="sticker font-mono">CORE_INIT_OK</span>
             <h1 
-              className="font-sans text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tighter leading-[0.9] text-foreground glitch-text"
-              data-text={t("nav.name")}
+              className="font-sans text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tighter leading-[0.9] text-foreground"
             >
               {t("nav.name")}
             </h1>
