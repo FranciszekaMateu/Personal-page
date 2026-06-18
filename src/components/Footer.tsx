@@ -35,7 +35,7 @@ export default function Footer() {
           <div className="hidden sm:block text-right mb-1">
             <pre className="font-mono text-[7px] leading-none text-primary/30 select-none font-bold">
               {"  ___ ___   ___   ___ _ ___ _____ _   _ \n" +
-               " | __/ __| / _ \\ / __| _ \\ __|_   _\\ \\ / / \n" +
+               " | __/ __| / _ \\ / __| _ \\ __|_   _\\ \\\\ / / \n" +
                " | _|\\__ \\| (_) | (__|   / _|  | |  \\ V /  \n" +
                " |_| |___/ \\___/ \\___|_|_\\___| |_|   |_|   "}
             </pre>
